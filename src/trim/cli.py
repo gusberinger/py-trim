@@ -63,15 +63,19 @@ def parse(args=None):
     parser.add_argument(
         "start_time",
         type=str,
-        help="The start time of the clip in the original video. Format: HH:MM:SS or MM:SS or SS",
+        help="The start time of the clip in the original video. "
+        "Format: HH:MM:SS or MM:SS or SS.",
     )
     parser.add_argument(
         "end_time",
         type=str,
-        help="The end time of the clip in the orginal video. Format: HH:MM:SS or MM:SS or SS.",
+        help="The end time of the clip in the orginal video. "
+        "Format: HH:MM:SS or MM:SS or SS.",
     )
     parser.add_argument(
-        "dest_file", type=Path, help="The path that the trimmed video will be saved to."
+        "dest_file",
+        type=Path,
+        help="The path that the trimmed video will be saved to.",
     )
     args = parser.parse_args(None)
     if get_duration(args.start_time) > get_duration(args.end_time):
