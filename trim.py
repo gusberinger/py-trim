@@ -7,7 +7,6 @@ import subprocess
 HOUR_REGEX = r"(\d{1,2}):(\d{2}):(\d{2})(\.\d+)?"
 MINUTES_REGEX = r"(\d{1,2}):(\d{2})(\.\d+)?"
 SECONDS_REGEX = r"(\d{1,2})(\.\d+)?"
-
 TIME_REGEX = r"\d{1,2}(?::\d{2}){0,2}(?:\.\d+)?"
 
 
@@ -83,11 +82,7 @@ def parse(args=None):
     return args
 
 
-if __name__ == "__main__":
-    assert get_duration("22:45.2") == (22 * 60) + 45.2
-    assert get_duration("22:45") == (22 * 60) + 45
-    assert get_duration("22") == 22
-    assert get_duration("22.9") == 22.9
+def main():
     args = parse()
     commands = [
         "ffmpeg",
@@ -102,3 +97,10 @@ if __name__ == "__main__":
         str(args.dest_file.absolute()),
     ]
     subprocess.run(commands)
+
+
+if __name__ == "__main__":
+    assert get_duration("22:45.2") == (22 * 60) + 45.2
+    assert get_duration("22:45") == (22 * 60) + 45
+    assert get_duration("22") == 22
+    assert get_duration("22.9") == 22.9
