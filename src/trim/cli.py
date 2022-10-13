@@ -88,14 +88,15 @@ def parse(args=None):
 
 def main():
     args = parse()
+    duration = get_duration(args.end_time) - get_duration(args.start_time)
     commands = [
         "ffmpeg",
-        "-i",
-        str(args.source_file.absolute()),
         "-ss",
         args.start_time,
-        "-to",
-        args.end_time,
+        "-i",
+        str(args.source_file.absolute()),
+        "-t",
+        f"{duration:.4f}",
         "-async",
         "1",
         str(args.dest_file.absolute()),
