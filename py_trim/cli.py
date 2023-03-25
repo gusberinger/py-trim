@@ -9,6 +9,7 @@ TESTED_VERSION = "5.1.2"
 
 app = typer.Typer()
 
+
 def check_ffmpeg_version():
     """Check that ffmpeg is installed and is the correct version."""
     version_output = subprocess.run(
@@ -17,10 +18,12 @@ def check_ffmpeg_version():
     version = re.match(r"ffmpeg version (\d+\.\d+\.\d+)", version_output)
     if version is None:
         raise typer.BadParameter("FFmpeg is not installed.")
-    
+
     version = parse_version(version.group(1))
     if version < parse_version(TESTED_VERSION):
-        raise typer.warning(f"Tested with FFmpeg version {TESTED_VERSION}, but you have version {version}")
+        raise typer.warning(
+            f"Tested with FFmpeg version {TESTED_VERSION}, but you have version {version}"
+        )
 
 
 @app.command()
