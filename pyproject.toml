@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "py-trim"
+version = "0.1.0"
+description = ""
+authors = ["Gus Beringer <gusberinger@gmail.com>"]
+readme = "README.md"
+packages = [{include = "py_trim"}]
+
+[tool.poetry.scripts]
+trim-video = "py_trim.cli:app"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+typer = {extras = ["all"], version = "^0.7.0"}
+packaging = "^23.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
